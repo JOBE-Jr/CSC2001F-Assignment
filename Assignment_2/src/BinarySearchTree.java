@@ -2,69 +2,8 @@
 // 27 March 2017
 // Hussein Suleman
 
-public class AVLTree<dataType extends Comparable<? super dataType>> extends BinaryTree<dataType>
-{
-
-    public int height ( BinaryTreeNode<dataType> node )
-    {
-        if (node != null)
-            return node.height;
-        return -1;
-    }
+public class BinarySearchTree<dataType extends Comparable<? super dataType>> extends BinaryTree<dataType>{
    
-   public int balanceFactor ( BinaryTreeNode<dataType> node )
-   {
-        return height (node.right) - height (node.left);
-   }
-   
-   public void fixHeight ( BinaryTreeNode<dataType> node )
-   {
-        node.height = Math.max (height (node.left), height (node.right)) + 1;
-   }
-   
-   public BinaryTreeNode<dataType> rotateRight ( BinaryTreeNode<dataType> p )
-   {
-        BinaryTreeNode<dataType> q = p.left;
-        p.left = q.right;
-        q.right = p;
-        fixHeight (p);
-        fixHeight (q);
-        return q;
-   }
-
-   public BinaryTreeNode<dataType> rotateLeft ( BinaryTreeNode<dataType> q )
-   {
-      BinaryTreeNode<dataType> p = q.right;
-      q.right = p.left;
-      p.left = q;
-      fixHeight (q);
-      fixHeight (p);
-      return p;
-   }
-   
-   public BinaryTreeNode<dataType> balance ( BinaryTreeNode<dataType> p )
-   {
-      fixHeight (p);
-      if (balanceFactor (p) == 2)
-      {
-         if (balanceFactor (p.right) < 0)
-            p.right = rotateRight (p.right);
-         return rotateLeft (p);
-      }
-      if (balanceFactor (p) == -2)
-      {
-         if (balanceFactor (p.left) > 0)
-            p.left = rotateLeft (p.left);
-         return rotateRight (p);
-      }
-      return p;
-   }
-
-   public void insert ( dataType d )
-   {
-      root = insert (d, root);
-   }
-
    private int insertC = 0;
     
    public void insert ( dataType d){

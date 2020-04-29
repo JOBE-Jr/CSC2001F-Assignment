@@ -1,4 +1,5 @@
 JAVAC = /usr/bin/javac
+JAVADOC = /usr/bin/javadoc
 .SUFFIXES: .java .class
 
 SRCDIR = src
@@ -9,7 +10,7 @@ DOCDIR = doc
 $(BINDIR)/%.class:%$(SRCDIR)/%.java
 	$(JAVAC) -d $(BINDIR)/ -cp $(BINDIR) $<
 
-CLASSES = LoadShedding.class FileData.class LSArray.class LSArrayApp.class LSBST.class LSBSTApp.class \
+CLASSES = LoadShedding.class FileData.class AVLTree.class LSAVLTApp.class LSBST.class LSBSTApp.class \
 BinaryTree.class BInarySearchTree.class BTQueue.class BTQueueNode.class BinaryTreeNode.class BinaryTreeNode.class
 
 CLASS_FILES = $(CLASSES:%.class = $(BINDIR)/%.class)
@@ -20,6 +21,9 @@ clean:
 	rm $(SRCDIR)/*~
 	rm $(DATADIR)/*
 	rm $(DOCDIR)/*
+
+docs:
+	javadoc -d doc/ src/*.java
 
 runA:
 	java -cp bin LSArrayApp $(stage) $(day) $(time)

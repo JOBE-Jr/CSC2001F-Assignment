@@ -39,20 +39,10 @@ public class FileData{
         return new LoadShedding(slot, areas);
     }
     
-    public void setFile(String filename){
-    
-       this.filename = new File(filename); 
-    }
-    
-    public String getFile(){
-    
-        return filename.getName();
-    }
-    
 	// Returns all the lines within the file
     public void printFile(){
     
-        System.out.println("File : "+this.getFile());
+        System.out.println("File : " + this.filename.getName());
         
         while( inputReader.hasNextLine()){
         
@@ -65,6 +55,6 @@ public class FileData{
     
     public String toString(){
     
-        return this.getFile();
+        return this.filename.getName();
     }  
 }

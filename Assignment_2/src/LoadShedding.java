@@ -7,7 +7,6 @@ public class LoadShedding implements Comparable<LoadShedding>{
     
         this.slot = slot;
         this.areas = areas;
-        this.slotSeparator();
             
     }
     
@@ -15,24 +14,10 @@ public class LoadShedding implements Comparable<LoadShedding>{
     
         this(slot, "");
     }
-    
-    private void slotSeparator(){
-    
-        int index = this.slot.indexOf("_");
-        int lastIndex = this.slot.lastIndexOf("_");
-        this.stage = Integer.parseInt(this.slot.substring(0, index).trim());
-        this.day = Integer.parseInt(this.slot.substring(index + 1 , lastIndex).trim());
-        this.startTime = Integer.parseInt(this.slot.substring(lastIndex + 1).trim());    
-    }
-    
-    public boolean Slot(String slot){
-    
-        return this.slot.equals(slot); // comparison if the slot are of the same stage, day and time
-    }
-    
+ 
     public boolean equals(String stage, String day, String startTime){
     
-        return ( this.slot.equals(stage + "_" + day + "_" + startTime); //This ia a comparison of the day if it is the same as the one requested by user
+        return ( this.slot.equals(stage + "_" + day + "_" + startTime)); //This ia a comparison of the day if it is the same as the one requested by user
     }
 
     public String getAreas(){ //returns areas of the requested day, stage and time
